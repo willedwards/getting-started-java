@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -16,7 +15,6 @@ import java.io.IOException;
 
 
 @Configuration
-@EnableAutoConfiguration
 public class Config {
     private static final Logger log = LoggerFactory.getLogger(Config.class);
 
@@ -24,8 +22,8 @@ public class Config {
     @Autowired
     private Environment env;
 
-    @Value("${app.url}")
-    public String appUrl;
+    @Value("${app.projectId}")
+    public String projectId;
 
     @Value("${server.port}")
     public String port;
@@ -38,6 +36,7 @@ public class Config {
 
     private static String environment = "LOCAL";
 
+    private String applicationUrl;
 
     @Bean
     public javax.validation.Validator buildValidator() {
@@ -48,7 +47,9 @@ public class Config {
     @PostConstruct
     public void start() {
 
-        log.info("Running at location " + getAppUrl());
+        applicationUrl = "https://" + projectId + "appspot.com";
+
+        log.info("Running at location " + getApplicationUrl());
 
         String deployEnv = env.getProperty("DEPLOY_ENV");
         log.info("DEPLOY_ENV = " + deployEnv);
@@ -56,7 +57,7 @@ public class Config {
         CoreConnection.maven_version = MAVEN_VERSION;
 
         if (deployEnv != null && deployEnv.equalsIgnoreCase("PROD")) {
-            CoreConnection.appUrl = appUrl;
+            CoreConnection.appUrl = applicationUrl;
             CoreConnection.port = "";
         }
 
@@ -74,7 +75,7 @@ public class Config {
 
 
 
-    private String getAppUrl(){
+    private String getApplicationUrl(){
 
         String hostUrl;
         String environment = System.getProperty("com.google.appengine.runtime.environment");

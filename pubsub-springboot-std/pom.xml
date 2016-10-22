@@ -14,14 +14,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.0.RELEASE</version>
+        <version>1.3.0.RELEASE</version>
         <relativePath></relativePath>
     </parent>
     <properties>
+        <appengine.projectId>long-star-142813</appengine.projectId>
         <target.webapp.dir>${project.build.directory}/${project.build.finalName}</target.webapp.dir>
         <src.webapp.dir>${basedir}/src/main/webapp</src.webapp.dir>
-        <app.version>${project.version}</app.version>
-        <app.url>http://itaxibookqa.appspot.com</app.url>
+        <application.version>${project.version}</application.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <start-class>com.example.std.gettingstarted.Application</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,29 +76,10 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- java el expresesion  -->
-        <dependency>
-            <groupId>de.odysseus.juel</groupId>
-            <artifactId>juel-api</artifactId>
-            <version>2.2.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>de.odysseus.juel</groupId>
-            <artifactId>juel-impl</artifactId>
-            <version>2.2.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>de.odysseus.juel</groupId>
-            <artifactId>juel-spi</artifactId>
-            <version>2.2.7</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-legacy</artifactId>
-            <version>1.1.2.BUILD-SNAPSHOT</version>
+            <version>1.0.3.RELEASE</version>
         </dependency>
 
 

@@ -28,7 +28,7 @@ public class GcloudConfig
 
     //BASE_PACKAGE = "com.google.cloud.pubsub.client.demos.appengine"
 
-    @Value("${appengine.projectId}")
+    @Value("${app.projectId}")
     private String projectId;
 
     private static final String APPLICATION_NAME = "google-cloud-pubsub-appengine-sample/1.0";
